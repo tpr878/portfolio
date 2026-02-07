@@ -1092,8 +1092,6 @@
         async function sendMessage(query) {
             if (!query.trim()) return;
 
-            hasClicked = true; // Stop scroll-reveal once user clicks
-
             addUserMessage(query);
             messageInput.value = '';
             sendBtn.disabled = true;
@@ -1160,8 +1158,15 @@
         // Chip click handler
         messagesArea.addEventListener('click', (e) => {
             if (e.target.classList.contains('chip')) {
-                hasClicked = true;
                 const query = e.target.dataset.query;
+
+                // Only set hasClicked if this is NOT a sequence query
+                // This allows the scroll tour to continue after clicking sequence items
+                const isSequenceQuery = revealSequence.some(item => query.toLowerCase().includes(item.query));
+                if (!isSequenceQuery) {
+                    hasClicked = true;
+                }
+
                 sendMessage(query);
             }
         });
