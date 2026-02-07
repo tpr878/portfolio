@@ -1041,6 +1041,13 @@
                 return;
             }
 
+            // ONLY trigger if user is near the bottom of the page (within 100px)
+            // This prevents triggering just by scrolling down to read the current content
+            const scrollPosition = window.innerHeight + window.scrollY;
+            const threshold = document.body.offsetHeight - 100;
+
+            if (scrollPosition < threshold) return;
+
             // Count initial intentional scrolls before activating
             initialScrollCount++;
             if (initialScrollCount < 3) return; // Require 3 intentional down-scrolls to start
