@@ -1033,9 +1033,10 @@
             // Check scroll direction and magnitude - only trigger on significant scroll DOWN
             if (e && e.type === 'wheel') {
                 // Require a minimum scroll delta to avoid accidental triggers
-                // deltaY > 50 means intentional scroll down (not just a light touch)
                 if (e.deltaY < 50) return;
-            } else {
+            }
+            // Also allow undefined 'e' (from touch handler)
+            else if (e !== undefined) {
                 return;
             }
 
