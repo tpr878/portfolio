@@ -97,6 +97,16 @@ DATABASES = {
     }
 }
 
+# Vercel: Use /tmp/db.sqlite3 for writable database
+if os.environ.get('VERCEL') or os.environ.get('AWS_LAMBDA_FUNCTION_NAME'):
+    import shutil
+    db_file = BASE_DIR / "db.sqlite3"
+    tmp_db = Path("/tmp/db.sqlite3")
+    if db_file.exists():
+        if not tmp_db.exists():
+            shutil.copy2(db_file, tmp_db)
+        DATABASES['default']['NAME'] = tmp_db
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
