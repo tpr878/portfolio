@@ -1109,6 +1109,22 @@
 
                 if (data.success) {
                     addAgentMessage(data.html, true);
+
+                    // If the query matches one of our sequence items, sync the scroll state!
+                    const lowerQuery = query.toLowerCase();
+                    const sequenceIndex = revealSequence.findIndex(item => lowerQuery.includes(item.query));
+
+                    if (sequenceIndex !== -1) {
+                        currentRevealIndex = sequenceIndex;
+                        hasClicked = false; // Re-enable scroll reveal!
+
+                        // Add keep scrolling hint immediately for better UX
+                        if (currentRevealIndex < revealSequence.length - 1) {
+                            setTimeout(() => {
+                                addAgentMessage('<p class="text-sm font-bold text-purple-400">⬇️ Keep scrolling for more, or ask questions about him directly on chat.</p>', true, false);
+                            }, 1000);
+                        }
+                    }
                 } else {
                     addAgentMessage("I'm sorry, I didn't understand that. Try clicking one of the topic buttons or ask about my skills, projects, or experience.");
                 }
