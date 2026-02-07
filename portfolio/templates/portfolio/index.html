@@ -977,7 +977,18 @@
         }
 
         function scrollToBottom() {
-            messagesArea.scrollTop = messagesArea.scrollHeight;
+            // Check if mobile layout (body scroll)
+            if (window.innerWidth <= 768) {
+                window.scrollTo({
+                    top: document.documentElement.scrollHeight,
+                    behavior: 'smooth'
+                });
+            } else {
+                messagesArea.scrollTo({
+                    top: messagesArea.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
         }
 
         // Fetch category data
