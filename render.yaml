@@ -1,0 +1,18 @@
+# Render deployment configuration
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: ravi-portfolio
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn portfolio_agent.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false  # You'll set this manually in Render dashboard
+      - key: PYTHON_VERSION
+        value: "3.11.0"

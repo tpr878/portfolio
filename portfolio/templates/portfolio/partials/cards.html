@@ -1,0 +1,43 @@
+{% for item in items %}
+<div class="response-card">
+    <div class="card-header">
+        <div class="flex items-start">
+            <div class="category-icon category-{{ item.category }}">
+                {% if item.category == 'education' %}🎓
+                {% elif item.category == 'experience' %}💼
+                {% elif item.category == 'project' %}📂
+                {% elif item.category == 'skill' %}🔬
+                {% elif item.category == 'publication' %}📄
+                {% elif item.category == 'profile' %}👤
+                {% endif %}
+            </div>
+            <div>
+                <h3 class="card-title">{{ item.title }}</h3>
+                {% if item.subtitle %}
+                <p class="card-subtitle">{{ item.subtitle }}</p>
+                {% endif %}
+            </div>
+        </div>
+        {% if item.date_start %}
+        <span class="card-date">{{ item.date_start }}{% if item.date_end %} – {{ item.date_end }}{% endif %}</span>
+        {% endif %}
+    </div>
+
+    {% if item.description %}
+    <div class="card-content">
+        {{ item.description|safe }}
+    </div>
+    {% endif %}
+
+    {% if item.technologies %}
+    <div class="tech-tags">
+        {% for tech in item.get_tech_list %}
+        <span class="tech-tag">{{ tech }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% empty %}
+<p class="text-gray-400">I couldn't find any items matching that query. Try asking about projects, education,
+    experience, or skills!</p>
+{% endfor %}
