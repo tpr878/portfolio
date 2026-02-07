@@ -1041,12 +1041,12 @@
                 return;
             }
 
-            // ONLY trigger if user is near the bottom of the page (within 100px)
-            // This prevents triggering just by scrolling down to read the current content
+            // ONLY trigger if user is near the bottom of the page (within 10px)
+            // Using document.documentElement.scrollHeight is usually more accurate for full page height
             const scrollPosition = window.innerHeight + window.scrollY;
-            const threshold = document.body.offsetHeight - 100;
+            const documentHeight = document.documentElement.scrollHeight;
 
-            if (scrollPosition < threshold) return;
+            if (documentHeight - scrollPosition > 10) return;
 
             // Count initial intentional scrolls before activating
             initialScrollCount++;
