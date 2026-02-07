@@ -37,7 +37,8 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Add Vercel host
-ALLOWED_HOSTS.append('.vercel.app')
+ALLOWED_HOSTS += ['.vercel.app', '.now.sh']
+
 
 # OpenAI API Key - set via environment variable
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
