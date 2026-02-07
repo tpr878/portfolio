@@ -1035,11 +1035,20 @@
                 addAgentMessage(data.html, true, false); // No auto-scroll
             }
 
-            // Add subtle "keep scrolling" hint if not the last section
+            // Add navigation buttons for upcoming sections if not the last section
             if (currentRevealIndex < revealSequence.length - 1) {
                 await new Promise(resolve => setTimeout(resolve, 500));
-                // Use a subtle styling for the hint
-                addAgentMessage('<p class="text-sm font-bold text-purple-400">⬇️ Keep scrolling for more, or ask questions about him directly on chat.</p>', true, false);
+
+                // Build button chips for next 2-3 sections
+                const upcomingSections = revealSequence.slice(currentRevealIndex + 1, currentRevealIndex + 4);
+                const buttonChips = upcomingSections.map(section =>
+                    `<button class="chip" data-query="${section.query}">${section.intro.split(' ')[0]} ${section.query.charAt(0).toUpperCase() + section.query.slice(1)}</button>`
+                ).join('');
+
+                addAgentMessage(`
+                    <p class="text-sm text-gray-400 mb-3">⬇️ Keep scrolling, or jump ahead:</p>
+                    <div class="chips-container">${buttonChips}</div>
+                `, true, false);
             }
 
             // Show completion message after last section
@@ -1118,10 +1127,18 @@
                         initialScrollCount = 10; // Bypass initial scroll count check to allow immediate scrolling
                         scrollCooldown = false; // Reset cooldown to allow immediate scrolling
 
-                        // Add keep scrolling hint immediately for better UX
+                        // Add navigation buttons for upcoming sections
                         if (currentRevealIndex < revealSequence.length - 1) {
                             setTimeout(() => {
-                                addAgentMessage('<p class="text-sm font-bold text-purple-400">⬇️ Keep scrolling for more, or ask questions about him directly on chat.</p>', true, false);
+                                const upcomingSections = revealSequence.slice(currentRevealIndex + 1, currentRevealIndex + 4);
+                                const buttonChips = upcomingSections.map(section =>
+                                    `<button class="chip" data-query="${section.query}">${section.intro.split(' ')[0]} ${section.query.charAt(0).toUpperCase() + section.query.slice(1)}</button>`
+                                ).join('');
+
+                                addAgentMessage(`
+                                    <p class="text-sm text-gray-400 mb-3">⬇️ Keep scrolling, or jump ahead:</p>
+                                    <div class="chips-container">${buttonChips}</div>
+                                `, true, false);
                             }, 1000);
                         }
                     }
