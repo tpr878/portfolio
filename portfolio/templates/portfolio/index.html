@@ -710,7 +710,8 @@
             }
 
             .input-field {
-                font-size: 0.875rem;
+                font-size: 16px;
+                /* prevent iOS zoom */
             }
 
             .send-btn {
@@ -915,7 +916,7 @@
         `;
 
         // Add agent message
-        function addAgentMessage(content, isHTML = false) {
+        function addAgentMessage(content, isHTML = false, doScroll = true) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message message-agent';
             messageDiv.innerHTML = `
@@ -925,7 +926,7 @@
                 </div>
             `;
             messagesArea.appendChild(messageDiv);
-            scrollToBottom();
+            if (doScroll) scrollToBottom();
         }
 
         // Add user message
@@ -996,21 +997,21 @@
                 addAgentMessage(`
                     <p class="mb-2">👀 <strong>I see you're scrolling!</strong></p>
                     <p class="text-gray-400">Let me show you everything Ravi has to offer...</p>
-                `, true);
+                `, true, false); // No auto-scroll
                 await new Promise(resolve => setTimeout(resolve, 800));
             }
 
             // Show intro for this section
-            addAgentMessage(`<p class="text-purple-400">${section.intro}</p>`, true);
+            addAgentMessage(`<p class="text-purple-400">${section.intro}</p>`, true, false); // No auto-scroll
 
-            showTypingIndicator();
+            showTypingIndicator(); // typing indicator scrolls
             await new Promise(resolve => setTimeout(resolve, 700));
 
             const data = await fetchCategoryData(section.query);
             removeTypingIndicator();
 
             if (data && data.success) {
-                addAgentMessage(data.html, true);
+                addAgentMessage(data.html, true, false); // No auto-scroll
             }
 
             // Show completion message after last section
@@ -1019,7 +1020,7 @@
                 addAgentMessage(`
                     <p class="mb-3">✨ <strong>That's the complete tour!</strong></p>
                     <p class="text-gray-400">If you have any specific questions, feel free to ask in the chat below.</p>
-                `, true);
+                `, true, false); // No auto-scroll
             }
 
             isRevealing = false;
