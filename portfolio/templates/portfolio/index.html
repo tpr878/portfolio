@@ -1024,6 +1024,13 @@
                 addAgentMessage(data.html, true, false); // No auto-scroll
             }
 
+            // Add subtle "keep scrolling" hint if not the last section
+            if (currentRevealIndex < revealSequence.length - 1) {
+                await new Promise(resolve => setTimeout(resolve, 500));
+                // Use a subtle styling for the hint
+                addAgentMessage('<p class="text-xs text-gray-500 italic">⬇️ Keep scrolling to see more...</p>', true, false);
+            }
+
             // Show completion message after last section
             if (currentRevealIndex === revealSequence.length - 1) {
                 await new Promise(resolve => setTimeout(resolve, 500));
