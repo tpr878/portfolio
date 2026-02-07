@@ -1008,14 +1008,14 @@
                     <p class="mb-2">👀 <strong>I see you're scrolling!</strong></p>
                     <p class="text-gray-400">Let me show you everything Ravi has to offer...</p>
                 `, true, false); // No auto-scroll
-                await new Promise(resolve => setTimeout(resolve, 800));
+                await new Promise(resolve => setTimeout(resolve, 300));
             }
 
             // Show intro for this section
             addAgentMessage(`<p class="text-purple-400">${section.intro}</p>`, true, false); // No auto-scroll
 
             showTypingIndicator(); // typing indicator scrolls
-            await new Promise(resolve => setTimeout(resolve, 700));
+            await new Promise(resolve => setTimeout(resolve, 300)); // Faster reveal
 
             const data = await fetchCategoryData(section.query);
             removeTypingIndicator();
@@ -1051,12 +1051,12 @@
                 return;
             }
 
-            // ONLY trigger if user is near the bottom of the page (within 10px)
-            // Using document.documentElement.scrollHeight is usually more accurate for full page height
+            // Trigger when user is getting close to bottom (within 300px)
+            // This creates a smoother "infinite scroll" feel
             const scrollPosition = window.innerHeight + window.scrollY;
             const documentHeight = document.documentElement.scrollHeight;
 
-            if (documentHeight - scrollPosition > 10) return;
+            if (documentHeight - scrollPosition > 300) return;
 
             // Count initial intentional scrolls before activating
             initialScrollCount++;
