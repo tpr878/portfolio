@@ -1118,6 +1118,7 @@
                         currentRevealIndex = sequenceIndex;
                         hasClicked = false; // Re-enable scroll reveal!
                         initialScrollCount = 10; // Bypass initial scroll count check to allow immediate scrolling
+                        scrollCooldown = false; // Reset cooldown to allow immediate scrolling
 
                         // Add keep scrolling hint immediately for better UX
                         if (currentRevealIndex < revealSequence.length - 1) {
