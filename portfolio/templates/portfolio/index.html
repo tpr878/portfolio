@@ -1035,20 +1035,10 @@
                 addAgentMessage(data.html, true, false); // No auto-scroll
             }
 
-            // Add navigation buttons for upcoming sections if not the last section
+            // Add subtle hint if not the last section (no buttons for auto-scroll)
             if (currentRevealIndex < revealSequence.length - 1) {
                 await new Promise(resolve => setTimeout(resolve, 500));
-
-                // Build button chips for next 2-3 sections
-                const upcomingSections = revealSequence.slice(currentRevealIndex + 1, currentRevealIndex + 4);
-                const buttonChips = upcomingSections.map(section =>
-                    `<button class="chip" data-query="${section.query}">${section.intro.split(' ')[0]} ${section.query.charAt(0).toUpperCase() + section.query.slice(1)}</button>`
-                ).join('');
-
-                addAgentMessage(`
-                    <p class="text-sm text-gray-400 mb-3">⬇️ Keep scrolling, or jump ahead:</p>
-                    <div class="chips-container">${buttonChips}</div>
-                `, true, false);
+                addAgentMessage('<p class="text-sm text-gray-400">⬇️ Keep scrolling for more...</p>', true, false);
             }
 
             // Show completion message after last section
