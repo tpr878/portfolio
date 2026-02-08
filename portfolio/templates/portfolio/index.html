@@ -1118,11 +1118,12 @@
                         initialScrollCount = 10; // Bypass initial scroll count check to allow immediate scrolling
                         scrollCooldown = false; // Reset cooldown to allow immediate scrolling
 
-                        // Add navigation buttons for upcoming sections
+                        // Add navigation buttons for all other sections (not just upcoming)
                         if (currentRevealIndex < revealSequence.length - 1) {
                             setTimeout(() => {
-                                const upcomingSections = revealSequence.slice(currentRevealIndex + 1, currentRevealIndex + 4);
-                                const buttonChips = upcomingSections.map(section =>
+                                // Get ALL sections except the current one
+                                const allOtherSections = revealSequence.filter((section, index) => index !== currentRevealIndex);
+                                const buttonChips = allOtherSections.map(section =>
                                     `<button class="chip" data-query="${section.query}">${section.intro.split(' ')[0]} ${section.query.charAt(0).toUpperCase() + section.query.slice(1)}</button>`
                                 ).join('');
 
