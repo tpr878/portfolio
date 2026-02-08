@@ -21,43 +21,14 @@ class Command(BaseCommand):
                     <p class="mb-2">📧 itsravirastogi@gmail.com</p>
                     <p class="mb-2">📱 +353 89 956 4137</p>
                     
-                    <div class="mt-4 space-y-3">
-                        <p class="leading-relaxed">
-                            <strong class="text-purple-400">AI/ML Engineer & Researcher</strong> with a unique blend of technical expertise 
-                            and business acumen. Currently pursuing an MSc in Information Systems at University College Dublin, 
-                            specializing in AI Ethics, Language Models, and Quantitative Data Analysis.
-                        </p>
-                        
-                        <p class="leading-relaxed">
-                            My journey combines rigorous academic research with practical industry experience. As a researcher 
-                            under Prof. Elisa D'Amico, I'm pioneering work in <span class="text-blue-400">climate-induced migration detection</span> 
-                            using advanced geospatial and NLP techniques. This work involves analyzing large-scale mobility data 
-                            from Meta and Google, combined with GDELT and ReliefWeb news sources to identify and validate 
-                            climate migration patterns—addressing one of the most pressing challenges of our time.
-                        </p>
-                        
-                        <p class="leading-relaxed">
-                            My technical expertise spans the full AI/ML pipeline: from <span class="text-purple-400">Natural Language Processing</span> 
-                            (including sentiment analysis and discourse relations) to <span class="text-purple-400">Machine Learning optimization</span> 
-                            (achieving 60% cost reduction in LLM operations while maintaining 92% quality). I've published research 
-                            in Springer on computational emotion analysis and developed production-ready systems using 
-                            RAG architectures, OpenAI APIs, and modern ML frameworks.
-                        </p>
-                        
-                        <p class="leading-relaxed">
-                            Beyond research, I bring proven business impact: as Strategy and Operations Manager at EduAbroad, 
-                            I increased student inquiries by 20% and reduced reporting time by 30% through intelligent automation. 
-                            As Associate Team Leader at EduGorilla, I mentored teams to achieve 2x sales targets, demonstrating 
-                            that technical excellence and business results go hand in hand.
-                        </p>
-                        
-                        <p class="leading-relaxed text-gray-400">
-                            I'm passionate about building AI systems that are not only technically sophisticated but also 
-                            ethically responsible and practically useful. Whether it's detecting climate migration patterns, 
-                            optimizing LLM costs, or analyzing emotions in multilingual contexts, I approach each problem 
-                            with curiosity, rigor, and a commitment to real-world impact.
-                        </p>
-                    </div>
+                    <p class="mt-4 leading-relaxed">
+                        AI/ML Engineer pursuing an MSc at University College Dublin, specializing in NLP and climate research. 
+                        Currently researching climate-induced migration detection using geospatial analysis and NLP under Prof. Elisa D'Amico. 
+                        Published in Springer on computational emotion analysis, with proven expertise in LLM optimization (60% cost reduction), 
+                        RAG architectures, and production ML systems. Combines technical skills with business impact—increased student 
+                        inquiries by 20% and mentored teams to 2x sales targets. Passionate about building ethically responsible AI 
+                        that solves real-world problems.
+                    </p>
                 ''',
                 'order': 1,
             },
