@@ -1039,7 +1039,7 @@
             // Add subtle hint if not the last section (no buttons for auto-scroll)
             if (currentRevealIndex < revealSequence.length - 1) {
                 await new Promise(resolve => setTimeout(resolve, 500));
-                addAgentMessage('<p class="text-sm text-gray-400">⬇️ Keep scrolling for more...</p>', true, false);
+                addAgentMessage('<p class="text-sm font-bold text-purple-400">⬇️ Keep scrolling for more... or simply ask anything on chat</p>', true, false);
             }
 
             // Show completion message after last section
