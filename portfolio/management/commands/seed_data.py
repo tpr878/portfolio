@@ -22,10 +22,10 @@ class Command(BaseCommand):
                     <p class="mb-2">📱 +353 89 956 4137</p>
                     
                     <p class="mt-4 leading-relaxed">
-                        AI/ML Engineer pursuing a Master's in Information Systems, specializing in NLP and climate research. 
+                        AI/ML Engineer pursuing a Master's in Information Systems, specializing in NLP, Data Analytics, and Agentic AI. 
                         Experienced in building production ML systems, language models, and data-driven solutions. 
                         Combines technical expertise with business acumen to deliver impactful results. 
-                        Passionate about leveraging AI to solve real-world problems ethically and effectively.
+                        Passionate about using AI to solve real-world problems ethically and effectively.
                     </p>
                 ''',
                 'order': 1,
