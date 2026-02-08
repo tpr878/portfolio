@@ -22,12 +22,10 @@ class Command(BaseCommand):
                     <p class="mb-2">📱 +353 89 956 4137</p>
                     
                     <p class="mt-4 leading-relaxed">
-                        AI/ML Engineer pursuing an MSc at University College Dublin, specializing in NLP and climate research. 
-                        Currently researching climate-induced migration detection using geospatial analysis and NLP under Prof. Elisa D'Amico. 
-                        Published in Springer on computational emotion analysis, with proven expertise in LLM optimization (60% cost reduction), 
-                        RAG architectures, and production ML systems. Combines technical skills with business impact—increased student 
-                        inquiries by 20% and mentored teams to 2x sales targets. Passionate about building ethically responsible AI 
-                        that solves real-world problems.
+                        AI/ML Engineer pursuing a Master's in Information Systems, specializing in NLP and climate research. 
+                        Experienced in building production ML systems, language models, and data-driven solutions. 
+                        Combines technical expertise with business acumen to deliver impactful results. 
+                        Passionate about leveraging AI to solve real-world problems ethically and effectively.
                     </p>
                 ''',
                 'order': 1,
