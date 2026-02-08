@@ -1061,28 +1061,28 @@
 
             // Check scroll direction and magnitude - only trigger on significant scroll DOWN
             if (e && e.type === 'wheel') {
-                // Require a minimum scroll delta to avoid accidental triggers
-                if (e.deltaY < 50) return;
+                // Require a minimum scroll delta to avoid accidental triggers (reduced for smoother feel)
+                if (e.deltaY < 20) return;
             }
             // Also allow undefined 'e' (from touch handler)
             else if (e !== undefined) {
                 return;
             }
 
-            // Trigger when user is getting close to bottom (within 300px)
+            // Trigger when user is getting close to bottom (within 500px for easier triggering)
             // This creates a smoother "infinite scroll" feel
             const scrollPosition = window.innerHeight + window.scrollY;
             const documentHeight = document.documentElement.scrollHeight;
 
-            if (documentHeight - scrollPosition > 300) return;
+            if (documentHeight - scrollPosition > 500) return;
 
             // Count initial intentional scrolls before activating
             initialScrollCount++;
-            if (initialScrollCount < 3) return; // Require 3 intentional down-scrolls to start
+            if (initialScrollCount < 2) return; // Require 2 intentional down-scrolls to start
 
-            // Set cooldown - faster for first scroll, slower for rest
+            // Set cooldown - faster for smoother experience
             scrollCooldown = true;
-            const cooldownTime = currentRevealIndex === -1 ? 500 : 1000;
+            const cooldownTime = currentRevealIndex === -1 ? 400 : 600;
             setTimeout(() => { scrollCooldown = false; }, cooldownTime);
 
             revealNextSection();
